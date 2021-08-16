@@ -24,6 +24,7 @@ table {
 	width : 1000px; 
 	border-collapse: collapse;
 	margin-top : 20px;
+	line-height : 1.6;
 }
 th, td { 
 	border: 1px solid black;
