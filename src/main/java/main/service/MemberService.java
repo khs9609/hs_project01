@@ -1,5 +1,6 @@
 package main.service;
 
+import java.util.List;
 
 public interface MemberService {
 	
@@ -8,4 +9,7 @@ public interface MemberService {
 	
 	//아이디 중복체크
 	public int selectMemberIdcheck(MemberVO vo) throws Exception;
+	
+	//우편번호 검색
+	public List<?> selectPostList(String dong) throws Exception;
 }

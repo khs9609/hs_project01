@@ -63,15 +63,17 @@
 						
 						
 						<div style="text-align: center;font-size:13px;letter-spacing: 2px;">
-						Please click the topMenu for move the site.
+						Please click the Menu for move the site.
 						</div>
 						<br><br><br>
 						
 						<div class="main_td_content">
 						(2021-08-13)<br>
 						게시판 쓰기,목록,상세보기,수정하기,삭제하기가 현재 구현되어 있습니다.
-						<br>
-						teads
+						<br><br><br>
+						(2021-08-17)<br>
+						회원가입 및 로그인 기능을 업데이트 했습니다.<br>
+						회원가입에서 아이디중복체크와 우편번호 검색, jQueryUI를 통해 구현된 생년월일 선택이 구현되어 있습니다.
 						</div>
 					</td>
 				</tr>

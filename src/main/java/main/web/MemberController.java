@@ -1,8 +1,11 @@
 package main.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,6 +51,23 @@ public class MemberController {
 		}
 		
 		return msg;
+	}
+	
+	/* 우편번호 검색 1 */
+	@RequestMapping("post1.do")
+	public String post1(MemberVO vo) {
+		
+		return "HsMember/post1";
+	}
+	
+	/* 우편번호 검색 결과 리스트 */
+	@RequestMapping("/post2.do")
+	public String post2(String dong, ModelMap model) throws Exception{
+		
+		List<?> list = memberService.selectPostList(dong);
+		model.addAttribute("resultList", list);
+		
+		return "HsMember/post2";
 	}
 	
 }

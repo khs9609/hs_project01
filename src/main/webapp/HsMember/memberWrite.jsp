@@ -19,11 +19,20 @@
 	      changeMonth: true,
 	      changeYear: true
 	    });
-	} );
-	
+	});
 	
 	
 	$( function(){
+		
+		/* 우편번호검색 클릭 시.. */
+		$("#btn_zipcode").click(function(){
+			
+			var w = 500;
+			var h = 200;
+			var url = "post1.do";
+			
+			window.open(url,"zipcode","width="+w+",height="+h);
+		});
 		
 		
 		/*  아이디 체크 버튼 클릭 시... */
@@ -210,7 +219,7 @@
 			<td><input type="text" name="phone" id="phone"> (예)010-1234-1234</td>
 		</tr>
 		<tr>
-			<th>우편번호</th>
+			<th>주소</th>
 			<td>
 			<input type="text" name="zipcode" id="zipcode">
 			<button type="button" class="btn1" id="btn_zipcode">우편번호검색</button>
@@ -221,7 +230,7 @@
 		<tr>
 			<td colspan="2" style="border : none;">
 			<div class="div_button">
-				<button type="button" class="btn2">저장</button>
+				<button type="button" id="btn_submit" class="btn2">저장</button>
 				<button type="reset" class="btn2">취소</button>
 			</div>
 			</td>

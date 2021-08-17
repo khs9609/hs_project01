@@ -14,7 +14,7 @@
 		
 		<div class="top_bar_login">
 			<a href="#">로그인</a>
-			<a href="#">회원가입</a>
+			<a href="memberWrite.do">회원가입</a>
 		</div>
 	</div>
 </body>

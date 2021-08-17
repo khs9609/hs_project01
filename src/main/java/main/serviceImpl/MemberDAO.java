@@ -1,6 +1,8 @@
 package main.serviceImpl;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
@@ -15,6 +17,10 @@ public class MemberDAO extends EgovAbstractDAO{
 
 	public int selectMemberIdcheck(MemberVO vo) {
 		return (int) select("memberDAO.selectMemberIdcheck",vo);
+	}
+
+	public List<?> selectPostList(String dong) {
+		return list("memberDAO.selectPostList", dong);
 	}
 
 }

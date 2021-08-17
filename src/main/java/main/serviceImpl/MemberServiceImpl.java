@@ -1,5 +1,7 @@
 package main.serviceImpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int selectMemberIdcheck(MemberVO vo) throws Exception {
 		return memberDAO.selectMemberIdcheck(vo);
+	}
+
+	@Override
+	public List<?> selectPostList(String dong) throws Exception {
+		return memberDAO.selectPostList(dong);
 	}
 
 }
