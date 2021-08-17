@@ -5,6 +5,119 @@
 <head>
 <meta charset="UTF-8">
 <title>홈페이지 화면</title>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+	
+ 	<script>
+	
+	$( function() {
+	    $( "#birth" ).datepicker({
+	      changeMonth: true,
+	      changeYear: true
+	    });
+	} );
+	
+	
+	
+	$( function(){
+		
+		
+		/*  아이디 체크 버튼 클릭 시... */
+		$("#btn_idcheck").click( function() {
+			
+			var userid = $.trim($("#userid").val());
+			
+			if(userid == ""){
+				alert("아이디를 입력해주세요.");
+				$("#userid").focus();
+				return false;
+			}
+			
+			//idcheck.do
+				$.ajax({
+					type : "POST",
+					data : "userid="+userid, //json타입
+					url : "idcheck.do",
+					dataType : "text",
+					success : function(result){
+						if(result == "ok"){
+							alert("사용가능한 아이디입니다.");
+						}else{
+							alert("사용할 수 없는 아이디입니다.");
+						}
+					},
+					error : function(){
+						alert("오류발생");
+					}
+					
+					
+				});
+			
+		});
+		
+		
+		/* 가입 버튼을 클릭했을 시... */
+	    $("#btn_submit").click(function() {
+	    	
+			var userid = $("#userid").val();
+			var pass = $("#pass").val();
+			var name = $("#name").val();
+	    	userid = $.trim(userid);
+	    	pass = $.trim(pass);
+	    	name = $.trim(name);
+	    	if(userid == ""){
+	    		alert("아이디를 입력해주세요");
+	    		$("#userid").focus();
+	    		return false;
+	    	}
+	    	if(pass == ""){
+	    		alert("패스워드를 입력해주세요");
+	    		$("#pass").focus();
+	    		return false;
+	    	}
+	    	if(name == ""){
+	    		alert("이름을 입력해주세요");
+	    		$("#name").focus();
+	    		return false;
+	    	}
+	    	
+	    	$("#userid").val(userid);
+	      	$("#pass").val(pass);
+	      	$("#name").val(name);
+	      	
+	      	//회원가입 처리를 위한 ajax
+	      	
+	      	var formData = $("#frm").serialize();
+	      	
+	      	$.ajax({
+	      		type : "POST",
+	      		data : formData,
+	      		url : "memberWriteSave.do",
+	      		dataType : "text",
+	      		success : function(result){ //성공했을 경우
+	      			if(result == "ok"){
+	      				alert("가입완료");
+	      				location : "loginWrite.do" ;
+	      			}else{
+	      				alert("가입 실패 \n 관리자에게 문의주세요");
+	      			}
+	      		},
+	      	
+	      		error : function() {
+	      			alert("오류가 발생했습니다. 관리자에게 문의 혹은 잠시 후에 시도해주세요");
+	      		}
+	      	});
+	    	
+	    });
+		
+	});
+	
+	</script> 
+
 </head>
 <link type="text/css" rel="stylesheet" href="css/headerStyle.css" />
 <style>
@@ -21,14 +134,8 @@
 		font-weight: bold;
 		color : #84817a;
 	}
-	th, td {
-		border : 1px solid black;
-		padding : 5px;
-		font-size : 15px;
-	}
-	th { 
-		background-color : #7f8c8d;
-	}	
+	th, td {border : 1px solid black;padding : 5px;font-size : 15px;line-height: 1.9}
+	th { background-color : #7f8c8d;}	
 	.main_td_title{
 		font-size : 26px;
 		font-weight: bold;
@@ -36,15 +143,8 @@
 		text-align:center;
 		letter-spacing: -1px;
 	}
-	.main_td_content{
-		color : #84817a;
-		font-size : 16px;
-	}
-	.div_button{
-		text-align : center;
-		margin-top : 10px;
-		
-	}
+	.main_td_content{color : #84817a;font-size : 16px;}
+	.div_button{text-align : center;margin-top : 10px;}
 	.btn1 { 
 		font-size:9pt;
 		padding : 3px;
@@ -73,14 +173,17 @@
 	<%@ include file="../include//header.jsp" %>
 	</header>
 	
-	<section>
+<section>
 <form id="frm" name="frm">
 	<table>
 		<caption>회원가입</caption>
 		
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" name="userid" id="userid"></td>
+			<td>
+			<input type="text" name="userid" id="userid">
+			<button type="button" class="btn1" id="btn_idcheck">아이디중복체크</button>
+			</td>
 		</tr>
 		
 		<tr>
@@ -127,7 +230,7 @@
 	</table>
 </form>
 	
-	</section>
+</section>
 	
 	<footer>
 		(2021) copyright 김효섭 [ 울산광역시 남구 무거동 인근 ] <br>

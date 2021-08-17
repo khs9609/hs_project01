@@ -11,13 +11,17 @@ import main.service.MemberVO;
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
-
 	@Resource(name="memberDAO")
 	public MemberDAO memberDAO;
 	
 	@Override
 	public String insertMember(MemberVO vo) throws Exception {
 		return memberDAO.insertMember(vo);
+	}
+
+	@Override
+	public int selectMemberIdcheck(MemberVO vo) throws Exception {
+		return memberDAO.selectMemberIdcheck(vo);
 	}
 
 }
