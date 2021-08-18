@@ -68,33 +68,30 @@ border-radius: 5px;
 
 <script>
 $(function(){
-	$("#btn_del").click(function(){
+	$("#btn_login").click(function(){
 			
+		var userid = $("#userid").val();
 		var pass = $("#pass").val();
-		pass = $.trim(pass);
 		
-		if(pass == ""){
-			alert("패스워드를 입력해주세요!");
-			$("#pass").focus();
+		if(userid == "" || pass == ""){
+			alert("입력되지 않은 정보가 있습니다.");
 			return false;
 		}
 		
-		var sendData = "unq=${unq}&pass="+pass;
+		var sendData = "userid="+userid+"&pass="+pass;
 		
 		// 비동기 전송방식의 기능을 가지고 있는 jquery의 함수
 		$.ajax({
 			type : "POST",
 			data : sendData,
-			url : "boardDelete.do", // 실제경로 , 저장주소
+			url : "loginSubmit.do", // 실제경로 , 저장주소
 			dataType : "text", //리턴 타입
-			success : function(data){ //성공했을 경우  //controller -> "ok","fail" //변수는 무엇을 넣어도 됌
-				if(data == "1") {
-					alert("삭제완료");
-					location="boardList.do";
-				} else if(data == "-1"){
-					alert("패스워드가 일치하지 않습니다.");
-				}else {
-					alert("저장실패");				
+			success : function(result){ //성공했을 경우  //controller -> "ok","fail" //변수는 무엇을 넣어도 됌
+				if(result == "ok") {
+					alert("로그인 되었습니다. \n 현재는 게시판만 이용가능합니다");
+					location="main.do";
+				} else{
+					alert("아이디와 패스워드를 다시 한번 확인해주세요.");
 				}
 			},
 			error : function() { // 실패했을 경우
