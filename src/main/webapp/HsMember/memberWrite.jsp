@@ -6,18 +6,21 @@
 <meta charset="UTF-8">
 <title>홈페이지 화면</title>
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
 
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+ 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+ 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 	
  	<script>
 	
 	$( function() {
 	    $( "#birth" ).datepicker({
 	      changeMonth: true,
-	      changeYear: true
+	      changeYear: true,
+	      
+	      dayNamesMin : ['일','월','화','수','목','금','토'],
+	      monthNamesShort : ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	      dateFormat : 'yy-mm-dd'
 	    });
 	});
 	
@@ -75,9 +78,15 @@
 			var userid = $("#userid").val();
 			var pass = $("#pass").val();
 			var name = $("#name").val();
+			var phone = $("#phone").val();
+			
+			
 	    	userid = $.trim(userid);
 	    	pass = $.trim(pass);
 	    	name = $.trim(name);
+	    	phone = $.trim(phone);
+	    	
+	    	
 	    	if(userid == ""){
 	    		alert("아이디를 입력해주세요");
 	    		$("#userid").focus();
@@ -94,9 +103,22 @@
 	    		return false;
 	    	}
 	    	
+	    	// 체크박스 유무
+	    	if(!$(':input:radio[name=gender]:checked').val()) {   
+			   alert("1개 이상 선택해 주세요.");
+			   return false;
+			}
+	    	
+	    	if(phone == ""){
+	    		alert("연락처를 입력해주세요");
+	    		$("#phone").focus();
+	    		return false;
+	    	}
+	    	
 	    	$("#userid").val(userid);
 	      	$("#pass").val(pass);
 	      	$("#name").val(name);
+	      	$("#phone").val(phone);
 	      	
 	      	//회원가입 처리를 위한 ajax
 	      	
@@ -110,7 +132,7 @@
 	      		success : function(result){ //성공했을 경우
 	      			if(result == "ok"){
 	      				alert("가입완료");
-	      				location : "loginWrite.do" ;
+	      				location = "main.do" ;
 	      			}else{
 	      				alert("가입 실패 \n 관리자에게 문의주세요");
 	      			}

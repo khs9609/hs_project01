@@ -70,4 +70,11 @@ public class MemberController {
 		return "HsMember/post2";
 	}
 	
+	/* 로그인 화면 */
+	@RequestMapping("loginWrite.do")
+	public String loginWrite(MemberVO vo) {
+		
+		return "HsMember/loginWrite";
+	}
+	
 }

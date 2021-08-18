@@ -42,7 +42,7 @@
 	</c:forEach>
 </select>
 
-<br> <br>
+<br><br>
 
 <button type="button" id="btn_send">적용</button>
 </div>
