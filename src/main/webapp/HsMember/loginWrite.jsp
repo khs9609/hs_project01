@@ -62,7 +62,6 @@ border-radius: 5px;
 	text-align : left;
 	padding-left : 17px;
 	height : 20px;
-	
 }
 </style>
 
