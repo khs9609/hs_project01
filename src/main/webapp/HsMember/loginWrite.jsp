@@ -88,10 +88,10 @@ $(function(){
 			dataType : "text", //리턴 타입
 			success : function(result){ //성공했을 경우  //controller -> "ok","fail" //변수는 무엇을 넣어도 됌
 				if(result == "ok") {
-					alert("로그인 되었습니다. \n 현재는 게시판만 이용가능합니다");
+					alert("로그인 되었습니다.\n현재는 게시판만 이용가능합니다");
 					location="main.do";
 				} else{
-					alert("아이디와 패스워드를 다시 한번 확인해주세요.");
+					alert("아이디 혹은 패스워드를 다시 한번 확인해주세요.");
 				}
 			},
 			error : function() { // 실패했을 경우

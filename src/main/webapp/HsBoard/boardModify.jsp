@@ -111,7 +111,7 @@ function fn_submit() {
 	<input type="hidden" id="unq" name="unq" value="${boardVO.unq }">
 	
 		<table>
-		<caption>게시글 작성하기</caption>
+		<caption>게시글 수정하기</caption>
 			<tr>
 				<th width="15%">제목</th>
 				<td width="85%"><input type="text" id="title" name="title" class="input1" value="${boardVO.title }"></td>
