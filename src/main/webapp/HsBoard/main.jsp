@@ -87,7 +87,7 @@
 	</section>
 	
 	<footer>
-		(2021) copyright 김효섭 [ 울산광역시 남구 무거동 인근 ] <br>
+		(2021) copyright 김효섭 [ 울산광역시 남구 무거동 ] <br>
 		Tel. 010-0000-0000
 	</footer>
 
