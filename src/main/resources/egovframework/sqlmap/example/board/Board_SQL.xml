@@ -41,7 +41,7 @@
 	
 	<select id="boardDAO.selectTotalBoard" resultClass="java.lang.Integer">
 		select count(*) total from nboard
-		<!-- 검색기능 사용 시 Total갯수 변동 -->
+		<!-- 검색기능 사용 시 Total갯수 변동. -->
 			<isNotNull property="searchGubun">
 				<isNotNull property="searchText">
 					WHERE $searchGubun$ like '%$searchText$%'
