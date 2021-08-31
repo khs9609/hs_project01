@@ -19,7 +19,7 @@
 		
 		<div class="header_search">
 			<input type="text">
-			<button type="submit">검색</button>
+			<button type="button">검색</button>
 		</div>
 </body>
 </html>

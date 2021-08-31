@@ -44,6 +44,7 @@ th {
 	padding: 3px;
 	margin-top : 10px;
 }
+.search_area {width:1000px;margin-left : auto;margin-right:auto;text-align : left;}
 
 
 </style>
@@ -103,9 +104,20 @@ th {
 		</c:forEach>
 	</div>
 	
-	
 	<div class="boardList_btn_area">
 		<button type="button" class="btn_write" onclick=" location='boardWrite.do' ">글쓰기</button>
+	</div>
+	
+	
+	<div class="search_area">
+		<form name="serachFrm" method="post" action="boardList.do">
+			<select name="searchGubun" id="searchGubun">
+				<option value="title">제목 </option>
+				<option value="name">내용</option>
+			</select>
+			<input type="text" name="searchText" id="searchText">
+			<button type="submit">검색</button>
+		</form>
 	</div>
 			
 </section>
